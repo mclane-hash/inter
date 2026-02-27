@@ -1,0 +1,418 @@
+/* ============================================ */
+/* RESET & BASE STYLES                          */
+/* ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: #0a0a1a;
+    color: #fff;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* ============================================ */
+/* ANIMATED STARS BACKGROUND                    */
+/* ============================================ */
+.stars, .twinkling {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.stars {
+    background: #0a0a1a url('https://i.imgur.com/YKY28eT.png') repeat;
+    animation: stars 200s linear infinite;
+}
+
+.twinkling {
+    background: transparent url('https://i.imgur.com/XYMF4ca.png') repeat;
+    animation: twinkling 100s linear infinite;
+    opacity: 0.5;
+}
+
+@keyframes stars {
+    from { transform: translateY(0); }
+    to { transform: translateY(-2000px); }
+}
+
+@keyframes twinkling {
+    from { transform: translateY(0); }
+    to { transform: translateY(-2000px); }
+}
+
+/* ============================================ */
+/* MAIN CONTAINER                               */
+/* ============================================ */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================ */
+/* HERO SECTION                                 */
+/* ============================================ */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.glitch {
+    font-size: 4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    text-shadow: 0.05em 0 0 #ff00ff, -0.05em -0.025em 0 #00ffff;
+    animation: glitch 725ms infinite;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    animation: glitch-offset 0.3s infinite linear;
+    color: #ff00ff;
+    z-index: -1;
+}
+
+.glitch::after {
+    animation: glitch-offset2 0.2s infinite linear;
+    color: #00ffff;
+    z-index: -2;
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+@keyframes glitch-offset {
+    0% { transform: translate(0); }
+    20% { transform: translate(-3px, 3px); }
+    40% { transform: translate(-3px, -3px); }
+    60% { transform: translate(3px, 3px); }
+    80% { transform: translate(3px, -3px); }
+    100% { transform: translate(0); }
+}
+
+@keyframes glitch-offset2 {
+    0% { transform: translate(0); }
+    20% { transform: translate(2px, -2px); }
+    40% { transform: translate(2px, 2px); }
+    60% { transform: translate(-2px, -2px); }
+    80% { transform: translate(-2px, 2px); }
+    100% { transform: translate(0); }
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #ccc;
+    max-width: 600px;
+    margin-bottom: 3rem;
+    line-height: 1.6;
+}
+
+.scroll-hint {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
+
+/* ============================================ */
+/* REASONS SECTION                              */
+/* ============================================ */
+.reasons {
+    min-height: 50vh;
+    padding: 4rem 0;
+}
+
+.reasons h2 {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 0 10px #ff00ff;
+}
+
+#reason-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.reason-item {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid #ff00ff;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s;
+    border-radius: 0 10px 10px 0;
+}
+
+.reason-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================ */
+/* PHOTO GALLERY (scroll reveal)                */
+/* ============================================ */
+.photo-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    padding: 4rem 0;
+}
+
+.photo-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s;
+    text-align: center;
+}
+
+.photo-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.photo-reveal img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.photo-caption {
+    margin-top: 1rem;
+    font-style: italic;
+    color: #ffaaff;
+}
+
+/* ============================================ */
+/* LOCKED DOOR SECTION (pure love)              */
+/* ============================================ */
+.door-section {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.door-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #fff;
+}
+
+.door-container {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    padding: 3rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+.door {
+    width: 150px;
+    height: 250px;
+    background: #8B4513;
+    margin: 0 auto 2rem;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+.door.open {
+    transform: rotateY(-120deg);
+    transform-origin: left;
+}
+
+.door-knob {
+    width: 20px;
+    height: 20px;
+    background: gold;
+    border-radius: 50%;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.door-question {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+#door-answer {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#door-button {
+    padding: 0.8rem 2rem;
+    background: linear-gradient(45deg, #ff00ff, #00ffff);
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#door-button:hover {
+    transform: scale(1.05);
+}
+
+#secret-message {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    animation: fadeIn 1s;
+}
+
+#secret-message.hidden {
+    display: none;
+}
+
+.secret-text {
+    font-size: 1.3rem;
+    margin: 1rem 0;
+    color: #ffaaff;
+}
+
+#play-song-button {
+    padding: 0.8rem 1.5rem;
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.3s;
+}
+
+#play-song-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================ */
+/* FINALE SECTION                               */
+/* ============================================ */
+.finale {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.heartbeat-visual {
+    margin-bottom: 3rem;
+}
+
+.pulse {
+    width: 100px;
+    height: 100px;
+    background: #ff0066;
+    border-radius: 50%;
+    animation: pulse 1.2s ease-in-out infinite;
+    box-shadow: 0 0 30px #ff0066;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.9); opacity: 0.7; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+.final-words {
+    font-size: 1.5rem;
+    max-width: 600px;
+    margin: 2rem auto;
+    line-height: 1.8;
+    color: #fff;
+}
+
+.signature {
+    font-size: 1.2rem;
+    color: #ffaaff;
+    margin-top: 2rem;
+    font-style: italic;
+}
+
+/* ============================================ */
+/* RESPONSIVE DESIGN                            */
+/* ============================================ */
+@media (max-width: 600px) {
+    .glitch {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .reason-item {
+        font-size: 1.1rem;
+    }
+}

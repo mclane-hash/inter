@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for you, always</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ============================================ -->
+    <!-- STARFIELD BACKGROUND (pure CSS)             -->
+    <!-- ============================================ -->
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+
+    <!-- ============================================ -->
+    <!-- MAIN CONTENT WRAPPER                         -->
+    <!-- ============================================ -->
+    <div class="container">
+
+        <!-- ========== SECTION 1: HERO ========== -->
+        <section class="hero">
+            <h1 class="glitch" data-text="[LIL MAMA💖]">[LIL MAMA💖]</h1>
+            <p class="subtitle">the universe decided to make you. and then it decided to give you to me.</p>
+            <div class="scroll-hint">scroll to enter ▼</div>
+        </section>
+
+        <!-- ========== SECTION 2: REASONS ========== -->
+        <section class="reasons">
+            <h2>reasons you're the one</h2>
+            <div id="reason-list"></div> <!-- filled by JavaScript -->
+        </section>
+
+        <!-- ========== SECTION 3: PHOTO GALLERY (scroll reveal) ========== -->
+        <section class="photo-gallery">
+            <div class="photo-reveal" id="photo1">
+                <img src="assets/images/photo1.jpg" alt="le me" loading="lazy">
+                <p class="photo-caption">naah just this cute mf ...oh says here he loves you so much </p>
+            </div>
+			<div class="photo-reveal" id="photo2">
+                <img src="assets/images/photo2.jpg" alt="her" loading="lazy">
+                <p class="photo-caption">always gets me smilling for no apparent reason</p>
+            </div>
+			<div class="photo-reveal" id="photo3">
+                <img src="assets/images/photo3.jpg" alt="her" loading="lazy">
+                <p class="photo-caption">woooooh! if fine was a person... a fucking godess</p>
+            </div>
+			<div class="photo-reveal" id="photo4">
+                <img src="assets/images/photo4.jpg" alt="her" loading="lazy">
+                <p class="photo-caption">they'd call me a pedophile i knoow but i'm in love with all your versions</p>
+            </div>
+            <!-- Add more photos as needed, copying the pattern above -->
+        </section>
+
+        <!-- ========== SECTION 4: THE LOCKED DOOR (pure love) ========== -->
+        <section class="door-section">
+            <h2>🔐 a question only you can answer</h2>
+            <div class="door-container">
+                <div class="door" id="door">
+                    <div class="door-knob"></div>
+                </div>
+                <!-- The question is now future-focused and positive -->
+                <p class="door-question">what's the one thing that i used to be soo addicted to but dropped it?</p>
+                <input type="text" id="door-answer" placeholder="type your answer here...">
+                <button id="door-button">unlock</button>
+                <div id="secret-message" class="hidden">
+                    <div class="heartbeat"></div>
+                    <p class="secret-text">i'm gonna learn to make this perfectly before that day comes. so when you walk through that door for real, it's waiting. just like i will be.</p>
+                    <button id="play-song-button">🎵 play our song</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== SECTION 5: FINALE ========== -->
+        <section class="finale">
+            <div class="heartbeat-visual">
+                <div class="pulse"></div>
+            </div>
+            <p class="final-words">you are not just loved. you are *witnessed*. every version of you. the one who waits. the one who stays. the one who saw me when i was invisible to myself.</p>
+            <p class="signature">yours, always. <br> [Macclane]</p>
+        </section>
+
+    </div>
+
+    <!-- ============================================ -->
+    <!-- HIDDEN AUDIO PLAYER (for our song)          -->
+    <!-- ============================================ -->
+    <audio id="our-song" loop>
+        <source src="assets/audio/our-song.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
